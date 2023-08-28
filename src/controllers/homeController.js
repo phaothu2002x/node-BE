@@ -1,11 +1,4 @@
-import mysql from "mysql2";
-
-// create the connection to database
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "backend-nodejs",
-});
+import userService from "../service/userService";
 
 const handleHelloWorld = (req, res) => {
     return res.render("home.ejs");
@@ -21,13 +14,10 @@ const handleCreateUser = (req, res) => {
     let name = req.body.name;
     let password = req.body.password;
 
-    connection.query(
-        "INSERT INTO users (email, username, password) VALUES (?, ?, ?)",
-        [email, name, password],
-        function (err, results, fields) {
-            console.log(results);
-        }
-    );
+    userService.createNewUser(email, name, password);
+
+    // check the hash pass (reverse)
+    // let check = bcrypt.compareSync(password, hashPassword);
 
     res.send("successed");
 };
