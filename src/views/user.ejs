@@ -14,10 +14,10 @@
         />
     </head>
     <body>
-        <form action="/user/create-user" method="POST">
-            <div class="user-containter">
-                <div class="container">
-                    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="user-containter">
+                    <form action="/user/create-user" method="POST">
                         <div class="mb-3 mt-4">
                             <h2>Create a new user</h2>
                         </div>
@@ -64,9 +64,48 @@
                                 Submit
                             </button>
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <!-- table -->
+                <div class="table-users">
+                    <h3 class="mt-3">Table users</h3>
+                    <table class="table table-bordered table-hover mt-3">
+                        <%= %>
+
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">User Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% userList.forEach(function(item,index){ %>
+                            <tr>
+                                <th scope="row"><%= index + 1%></th>
+                                <td><%= item.email%></td>
+                                <td><%= item.username%></td>
+                                <td>
+                                    <button
+                                        type="button"
+                                        class="btn btn-warning"
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-danger"
+                                    >
+                                        Danger
+                                    </button>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </form>
+        </div>
     </body>
 </html>
