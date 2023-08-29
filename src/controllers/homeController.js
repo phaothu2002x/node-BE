@@ -4,6 +4,7 @@ const handleHelloWorld = (req, res) => {
     return res.render("home.ejs");
 };
 
+// handle Create user
 const handleUser = async (req, res) => {
     let userList = await userService.getAllUser();
     return res.render("user.ejs", { userList });
@@ -19,18 +20,22 @@ const handleCreateUser = async (req, res) => {
     return res.redirect("/user");
 };
 
+// handle delete user
 const handleDeleteUser = async (req, res) => {
     await userService.deleteUser(req.params.id);
     return res.redirect("/user");
 };
 
+// handle update user
 const getUpdateUser = async (req, res) => {
     let id = req.params.id;
     let user = await userService.getUserById(id);
     let userData = {};
-    if (user && user.length > 0) {
-        userData = user[0];
-    }
+
+    userData = user;
+    // if (user && user.length > 0) {
+    //     userData = user[0];
+    // }
 
     return res.render("user-update.ejs", { userData });
 };
