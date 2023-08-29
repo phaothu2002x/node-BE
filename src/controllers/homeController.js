@@ -9,17 +9,14 @@ const handleUser = async (req, res) => {
     return res.render("user.ejs", { userList });
 };
 
-const handleCreateUser = (req, res) => {
+const handleCreateUser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.name;
     let password = req.body.password;
 
-    userService.createNewUser(email, name, password);
+    await userService.createNewUser(email, name, password);
 
     return res.redirect("/user");
-
-    // check the hash pass (reverse)
-    // let check = bcrypt.compareSync(password, hashPassword);
 };
 
 const handleDeleteUser = async (req, res) => {
