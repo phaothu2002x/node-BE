@@ -87,12 +87,12 @@
                                 <td><%= item.email%></td>
                                 <td><%= item.username%></td>
                                 <td>
-                                    <button
-                                        type="button"
+                                    <a
                                         class="btn btn-warning"
+                                        href="/update-user/<%= item.id %>"
                                     >
                                         Edit
-                                    </button>
+                                    </a>
 
                                     <form
                                         style="display: inline"

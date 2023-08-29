@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Edit User page</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="edit-user-containter">
+                    <form action="/user/update-user" method="POST">
+                        <div class="mb-3 mt-4">
+                            <h2>Update a new user</h2>
+                        </div>
+                        <input hidden value="<%= userData.id %>" name="id" />
+                        <div class="mb-3 mt-2 col-6">
+                            <label for="email" class="form-label"
+                                >Email address</label
+                            >
+                            <input
+                                required
+                                name="email"
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                value="<%= userData.email %>"
+                            />
+                        </div>
+                        <div class="col-6"></div>
+                        <div class="mb-3 mt-2 col-6">
+                            <label for="name" class="form-label"
+                                >User name</label
+                            >
+                            <input
+                                required
+                                name="name"
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                value="<%= userData.username %>"
+                            />
+                        </div>
+                        <div class="col-6"></div>
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">
+                                Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
