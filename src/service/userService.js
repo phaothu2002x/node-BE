@@ -4,8 +4,8 @@ import db from "../models/index";
 // get the promise implementation, we will use bluebird
 import bluebird from "bluebird";
 
+//hash password
 const salt = bcrypt.genSaltSync(10);
-
 const hashUserPassword = (userPassword) => {
     //hash the pass
     let hashPassword = bcrypt.hashSync(userPassword, salt);
