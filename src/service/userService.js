@@ -28,6 +28,16 @@ const createNewUser = async (email, name, password) => {
 
 const getAllUser = async () => {
     //test relationship
+
+    // let newUser = await db.User.findOne({
+    //     where: { id: 1 },
+    //     attributes: ["id", "username", "email"],
+    //     include: { model: db.Group, attributes: ["name", "description"]} ,
+    //     raw: true,
+    //     nest: true,
+    // });
+
+    //==>> bên trên là copy từ bên dưới do xem lướt vid
     // let newUser = await db.User.findOne({
     //     where: { id: 1 },
     //     include: { model: db.Group },
