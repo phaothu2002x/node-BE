@@ -2,12 +2,28 @@ import userApiService from "../service/userApiService";
 
 const readFunc = async (req, res) => {
     try {
-        let data = await userApiService.getAllUsers();
-        return res.status(200).json({
-            EM: data.EM, //error message
-            EC: data.EC, //error code
-            DT: data.DT, //data
-        });
+        if (req.query.page && req.query.limit) {
+            let page = req.query.page;
+            let limit = req.query.limit;
+            // nó trả về chuỗi không phải số
+
+            let data = await userApiService.getUserWithPagination(
+                +page,
+                +limit
+            );
+            return res.status(200).json({
+                EM: data.EM, //error message
+                EC: data.EC, //error code
+                DT: data.DT, //data
+            });
+        } else {
+            let data = await userApiService.getAllUsers();
+            return res.status(200).json({
+                EM: data.EM, //error message
+                EC: data.EC, //error code
+                DT: data.DT, //data
+            });
+        }
     } catch (e) {
         console.log(e);
         return res.status(500).json({
