@@ -35,7 +35,8 @@ const readFunc = async (req, res) => {
 };
 const createFunc = async (req, res) => {
     try {
-        let data = await userApiService.getAllUsers();
+        //validate
+        let data = await userApiService.createUser(req.body);
         return res.status(200).json({
             EM: data.EM, //error message
             EC: data.EC, //error code
