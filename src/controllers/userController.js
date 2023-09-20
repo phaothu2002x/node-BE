@@ -54,7 +54,7 @@ const createFunc = async (req, res) => {
 const updateFunc = async (req, res) => {
     try {
         //validate
-        let data = await userApiService.createUser(req.body);
+        let data = await userApiService.updateUser(req.body);
         return res.status(200).json({
             EM: data.EM, //error message
             EC: data.EC, //error code
