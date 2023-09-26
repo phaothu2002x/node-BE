@@ -6,7 +6,6 @@ import initApiRoutes from "./routes/api";
 
 require("dotenv").config();
 import bodyParser from "body-parser";
-import { createJWT, verifyToken } from "./middleware/JWTAction";
 
 // import connection from "./config/connectDB";
 
@@ -27,11 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // connection();
 
 // test jwt
-createJWT();
-let decodedData = verifyToken(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicnlhbiIsImFkZHJlc3MiOiJIQ00iLCJpYXQiOjE2OTUyOTUyOTd9.BiaY55FPIAsYZ3EPh1zwUYOgm8duCROnn3o4xcPZHTY"
-);
-console.log(decodedData);
+
 // init web routes
 initWebRoutes(app);
 initApiRoutes(app);
