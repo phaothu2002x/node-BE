@@ -1,11 +1,11 @@
+require("dotenv").config();
 import express from "express";
 import configCors from "./config/cors";
 import configViewEngine from "./config/viewEngine";
 import initWebRoutes from "./routes/web";
 import initApiRoutes from "./routes/api";
-
-require("dotenv").config();
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 
 // import connection from "./config/connectDB";
 
@@ -22,10 +22,8 @@ configViewEngine(app);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//test connectionDb
-// connection();
-
-// test jwt
+//config cookie-parser
+app.use(cookieParser());
 
 // init web routes
 initWebRoutes(app);

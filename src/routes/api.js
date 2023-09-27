@@ -20,7 +20,7 @@ const initAPIRoutes = (app) => {
     //get --R, post- C, put-U, delete-D
     router.get("/test-api", apiController.testApi);
     router.post("/register", apiController.handleRegister);
-    router.post("/login", tesMiddleWare, apiController.handleLogin);
+    router.post("/login", apiController.handleLogin);
 
     router.get("/user/read", userController.readFunc);
     router.post("/user/create", userController.createFunc);
