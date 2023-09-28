@@ -11,33 +11,16 @@ const router = express.Router();
  * @param {*} app : express app
  */
 
-const tesMiddleWare = (req, res, next) => {
-    console.log("calling middleware");
-    next();
-};
-
-// const checkUserLogin = (req, res, next) => {
-//     const nonSecurePaths = ["/", "/register", "/login"];
-//     if (nonSecurePaths.includes(req.path)) return next();
-
-//     //authenticate user
-//     next();
-// };
-
 const initAPIRoutes = (app) => {
     //path, handler
     // rest API
     //get --R, post- C, put-U, delete-D
+    router.all("*", checkUserJWT, checkUserPermission);
 
     router.post("/register", apiController.handleRegister);
     router.post("/login", apiController.handleLogin);
 
-    router.get(
-        "/user/read",
-        checkUserJWT,
-        checkUserPermission,
-        userController.readFunc
-    );
+    router.get("/user/read", userController.readFunc);
     router.post("/user/create", userController.createFunc);
     router.put("/user/update", userController.updateFunc);
     router.delete("/user/delete", userController.deleteFunc);
