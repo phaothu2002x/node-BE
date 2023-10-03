@@ -107,6 +107,7 @@ const handleUserLogin = async (rawData) => {
             if (isCorrectPassword) {
                 let groupWithRoles = await getGroupWithRoles(user);
                 let payload = {
+                    username: user.username,
                     email: user.email,
                     groupWithRoles,
                     expiresIn: process.env.JWT_EXPIRES_IN,
